@@ -4,13 +4,6 @@ c2 = #2980b9
 c1 = #3498db
 card_height = 428px
 
-.searchable
-	position relative
-	-webkit-transition -webkit-transform 0ms
-	transform translate3d(0,0,0) scale3d(1,1,1)
-	-webkit-transform translate3d(0,0,0) scale3d(1,1,1)
-	-webkit-backface-visibility hidden
-
 #search
 	display block
 	position absolute
@@ -19,6 +12,7 @@ card_height = 428px
 	overflow hidden
 	width 100%
 	z-index 101
+	-webkit-backface-visibility hidden
 	.form
 		height 70px
 		width 100%
@@ -43,11 +37,12 @@ card_height = 428px
 				padding 4px 15px 2px 20px
 				color c1
 				font-size 26px
+	.container.active
+		height (card_height + 71)
 	.container
 		width 100%
-		height (card_height + 70)
+		height 0
 		background c1
-		display none
 		overflow auto
 		-webkit-overflow-scrolling touch
 		-webkit-transform translate3d(0,0,0)

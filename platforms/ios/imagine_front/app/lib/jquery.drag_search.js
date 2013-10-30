@@ -51,7 +51,7 @@
 						hide();
 					}else{
 						search_input.focus();
-						word_list.show();
+						word_list.addClass("active");
 						$("nav,article,footer").hide();
 						setHeight(field_height,true);
 					}
@@ -99,7 +99,7 @@
 
 		function hide() {
 			search_input.blur();
-			word_list.hide();
+			word_list.removeClass("active");
 			_slidedown_height = 0;
 			setHeight(0,true);
 			cancelAnimationFrame(_anim);
