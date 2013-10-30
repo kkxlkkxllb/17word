@@ -1,0 +1,51 @@
+@import './mixin'
+
+@font-face
+		font-family DancingScript
+		font-style normal
+		src url('./mobile_font/DancingScript.woff')
+@font-face
+		font-family Lobster
+		font-style normal
+		src url('./mobile_font/Lobster.woff')
+@font-face
+		font-family Pacifico
+		font-style normal
+		src url('./mobile_font/Pacifico.woff')
+
+.dancing
+	font-family DancingScript
+.lobster
+	font-family Lobster
+.pacifico
+	font-family Pacifico
+html,body
+	margin 0
+	padding 0
+	width 100%
+	unselectable()
+
+c2 = #2980b9
+c1 = #3498db
+
+html
+	background c1
+	-webkit-tap-highlight-color rgba(0,0,0,0)
+	height 100%
+	overflow hidden
+body
+	font-size 1em
+	line-height 1.4
+	margin-top 10px
+::selection
+	background c2
+	text-shadow none
+p
+	text-align center
+	font-size 16px
+
+.disable_event
+	pointer-events none
+
+.hide
+	display none

@@ -1,0 +1,43 @@
+@import './mixin'
+
+c1 = #3498db
+c2 = #2980b9
+foot-height = 68px
+
+.badge
+	display block
+	position absolute
+	width 20px
+	height 20px
+	top 50%
+	left 50%
+	line-height 20px
+	background c2
+	border-radius 10px
+	font-size 16px
+
+footer
+	fixed()
+	bottom 0
+	.foot_nav
+		height foot-height
+		background c1
+		border-top 1px dashed c2
+		ul
+			margin 0
+			padding 0
+			li
+				list-style-type none
+				display table-cell
+				width 1%
+				text-align center
+				line-height foot-height
+				font-size 30px
+				text-shadow-inset()
+				position relative
+				&:active
+					background c2
+			li.micro.recording
+				pointer-events none
+				color #f1432c
+

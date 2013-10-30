@@ -1,0 +1,72 @@
+@import './mixin'
+
+c2 = #2980b9
+c1 = #3498db
+max_width = 320px
+max_height = 428px
+ctop = 70px
+
+article
+	display block
+	width 100%
+	height max_height
+.card_item
+	width max_width
+	background c2
+	height max_height
+	position relative
+	img.u_word
+		width max_width
+		vertical-middle-auto()
+		z-index 5
+	> div
+		font-size 36px
+		vertical-middle 80px
+		text_center()
+
+	.empty_tip
+		margin-top 40px
+		color c1
+		z-index 1
+	.title
+		line-height 80px
+		text-shadow-black()
+		z-index 9
+	span.share
+		position absolute
+		z-index 6
+		bottom 5px
+		left 5px
+		width 40px
+		height 40px
+		line-height 40px
+		text-align center
+		background rgba(0,0,0,0.5)
+		text-shadow-inset()
+		border-radius(20px)
+		font-size 30px
+#info
+	.container
+		width 320px
+		> div
+			padding 0 20px
+			margin-bottom 15px
+		.title
+			text-align center
+			font-size 26px
+			margin-top 10px
+		.tagg
+			border-radius 8px
+			background c2
+			padding 0 5px
+			margin 3px
+			display inline-block
+		.con,.quote
+			margin-bottom 5px
+			.pos
+				font-style italic
+			.text
+				margin-left 3px
+
+
+
