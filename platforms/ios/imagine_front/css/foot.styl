@@ -19,10 +19,10 @@ foot-height = 68px
 footer
 	fixed()
 	bottom 0
+	vbg-gradient(c2,c1)
 	.foot_nav
 		height foot-height
-		background c1
-		border-top 1px dashed c2
+		border-top 1px dashed c1
 		ul
 			margin 0
 			padding 0
@@ -37,7 +37,3 @@ footer
 				position relative
 				&:active
 					background c2
-			li.micro.recording
-				pointer-events none
-				color #f1432c
-

@@ -3,7 +3,7 @@ Cards = require("controllers/cards")
 Footer = require("controllers/footer")
 class Header extends Spine.Controller
 	events:
-		"click": "config"
+		"click .title": "config"
 	constructor: ->
 		super
 		Member.bind 'refresh', @render
@@ -19,5 +19,4 @@ class Header extends Spine.Controller
 		$("#help").addClass("show")
 		$(".title",@$el).animo
 			animation: 'tada'
-
 module.exports = Header

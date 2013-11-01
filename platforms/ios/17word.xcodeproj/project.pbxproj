@@ -16,7 +16,7 @@
 		1669FECB1820CD9D0073B099 /* screen~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 1669FECA1820CD9D0073B099 /* screen~iphone.png */; };
 		1669FED31820CEDC0073B099 /* logo-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 1669FECE1820CEDC0073B099 /* logo-72.png */; };
 		1669FED41820CEDC0073B099 /* logo-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1669FECF1820CEDC0073B099 /* logo-72@2x.png */; };
-		1669FED51820CEDC0073B099 /* logo-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 1669FED01820CEDC0073B099 /* logo-120.png */; };
+		1669FED51820CEDC0073B099 /* logo~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 1669FED01820CEDC0073B099 /* logo~iphone.png */; };
 		1669FED61820CEDC0073B099 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1669FED11820CEDC0073B099 /* logo.png */; };
 		1669FED71820CEDC0073B099 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1669FED21820CEDC0073B099 /* logo@2x.png */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
@@ -76,7 +76,7 @@
 		1669FECA1820CD9D0073B099 /* screen~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen~iphone.png"; sourceTree = "<group>"; };
 		1669FECE1820CEDC0073B099 /* logo-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-72.png"; sourceTree = "<group>"; };
 		1669FECF1820CEDC0073B099 /* logo-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-72@2x.png"; sourceTree = "<group>"; };
-		1669FED01820CEDC0073B099 /* logo-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-120.png"; sourceTree = "<group>"; };
+		1669FED01820CEDC0073B099 /* logo~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo~iphone.png"; sourceTree = "<group>"; };
 		1669FED11820CEDC0073B099 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		1669FED21820CEDC0073B099 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		1A987023CECB4838B864EC33 /* CDVSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVSound.m; path = org.apache.cordova.media/CDVSound.m; sourceTree = "<group>"; };
@@ -284,7 +284,7 @@
 			children = (
 				1669FECE1820CEDC0073B099 /* logo-72.png */,
 				1669FECF1820CEDC0073B099 /* logo-72@2x.png */,
-				1669FED01820CEDC0073B099 /* logo-120.png */,
+				1669FED01820CEDC0073B099 /* logo~iphone.png */,
 				1669FED11820CEDC0073B099 /* logo.png */,
 				1669FED21820CEDC0073B099 /* logo@2x.png */,
 			);
@@ -404,7 +404,7 @@
 				1F766FE213BBADB100FB74C0 /* Localizable.strings in Resources */,
 				1669FED31820CEDC0073B099 /* logo-72.png in Resources */,
 				302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */,
-				1669FED51820CEDC0073B099 /* logo-120.png in Resources */,
+				1669FED51820CEDC0073B099 /* logo~iphone.png in Resources */,
 				1669FEC71820CD620073B099 /* screen-568h@2x~iphone.png in Resources */,
 				30A0434814DC770100060A13 /* Localizable.strings in Resources */,
 				1669FED61820CEDC0073B099 /* logo.png in Resources */,
@@ -509,6 +509,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = 17word/17word.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -533,6 +534,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = 17word;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -544,6 +546,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = 17word/17word.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "17word/17word-Prefix.pch";
@@ -566,6 +569,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = 17word;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -610,6 +614,7 @@
 					"\"$(BUILT_PRODUCTS_DIR)/libCordova.a\"",
 					"-ObjC",
 				);
+				PROVISIONING_PROFILE = "8EF0EFA8-F1DD-4D9E-B38E-6D0F93D43205";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -626,7 +631,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Nanjing Yun Shang Tian Xia Information Technology Co., Ltd. (3X236R468F)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Nanjing Yun Shang Tian Xia Information Technology Co., Ltd. (3X236R468F)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
@@ -655,6 +661,7 @@
 					"\"$(BUILT_PRODUCTS_DIR)/libCordova.a\"",
 					"-ObjC",
 				);
+				PROVISIONING_PROFILE = "BD5033E6-25B8-4F77-8F2F-D42BCBC391B4";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "";

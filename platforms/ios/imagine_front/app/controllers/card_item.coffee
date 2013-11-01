@@ -5,22 +5,11 @@ class CardItem extends Spine.Controller
 	events:
 		"hold": "make"
 		"click": "playAudio"
-		"click .share": "share"
 	constructor: ->
 		super
 		@item.bind "deactive", @release
-		@item.bind "share:show", @showShare
 	render: =>
 		@html require("views/items/card")(@item)
-	share: (e) ->
-		e.stopPropagation()
-		word = @item.title
-		message =
-			text: "快来看我做的单词卡片 #{word}"
-			image: @item.image_url
-		window.socialmessage.send(message)
-	showShare: =>
-		@$el.find(".share").show()
 	make: (e) ->
 		e.preventDefault()
 		$target = $(e.currentTarget)
@@ -33,6 +22,7 @@ class CardItem extends Spine.Controller
 			targetHeight: 857
 			# saveToPhotoAlbum: true
 			destinationType: Camera.DestinationType.DATA_URL
+			# correctOrientation: false
 			# allowEdit: true
 		onFail = (msg) ->
 			console.log msg
@@ -47,7 +37,7 @@ class CardItem extends Spine.Controller
 			saveImg = (c) ->
 				c.image = b64img
 				c.save()
-				c.sync()
+				c.syncFail()
 			onSuccess = (position) ->
 				card.lat = position.coords.latitude
 				card.lng = position.coords.longitude
@@ -66,5 +56,14 @@ class CardItem extends Spine.Controller
 		unless Member.checkConnection(Connection.NONE)
 			src = "http://tts.yeshj.com/uk/s/" + encodeURIComponent(@item.title)
 			Member.playSound(src)
-
+	record: (e) ->
+		$target = $(e.currentTarget)
+		$target.addClass "recording"
+		filename = "mySound"
+		uploadMedia = (base64) ->
+			card = Card.actived()
+			blob = dataURLtoBlob(base64)
+			$target.removeClass "recording"
+			card.recognize_audio(blob)
+		Member.recordMedia(filename,uploadMedia)
 module.exports = CardItem

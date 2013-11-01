@@ -1,9 +1,11 @@
 #search
 	.form
 		form(action="#" onsubmit="$('#search_input').blur();return false;")
+			span.ico
+				i.fa.fa-search
 			input#search_input(type="text" name="search" placeholder="查找单词" autocorrect="off" autocomplete="off" autocapitalize="off")
 			span.btn.cancel
-				i.icon-remove-sign
+				i.fa.fa-times-circle
 	.container
 
 

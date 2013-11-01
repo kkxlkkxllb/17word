@@ -54,7 +54,7 @@ class Card extends Spine.Model
 			type: 'GET'
 			url: request_url
 		).done(onSuccess).fail(onFail)
-	sync: ->
+	sync: (handler) ->
 		blob = dataURLtoBlob(@image)
 		form = new FormData()
 		form.append("image", blob)
@@ -71,16 +71,14 @@ class Card extends Spine.Model
 			data: form
 			contentType: false
 			processData: false
-		).done(@syncSuccess).fail(@syncFail)
+		).done(@syncSuccess).fail(@syncFail).done(handler)
 	syncSuccess: (d) =>
 		if d.status is 0
 			img_url = Spine.Model.host + d.data
 			@updateAttributes
 				sync_over: true
 				image_url: img_url
-			@trigger "share:show"
 	syncFail: (err) =>
-		console.log err
 		@updateAttributes
 			sync_over: false
 		@trigger "badge:refresh"
