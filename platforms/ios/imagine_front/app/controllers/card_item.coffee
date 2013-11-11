@@ -30,14 +30,16 @@ class CardItem extends Spine.Controller
 		onSuccess = (imageData) =>
 			b64img = "data:image/jpeg;base64," + imageData
 			$img = $("img.u_word",@$el)
-			$img.attr "src",b64img
+			$img.attr "src", b64img
 			$img.animo
 				animation: 'tada'
 			$target.removeClass 'disable_event'
 			saveImg = (c) ->
-				c.image = b64img
-				c.save()
-				c.syncFail()
+				blob = dataURLtoBlob(b64img)
+				Member.writeImage blob,c.title,(path) ->
+					c.image = "file://" + path
+					c.save()
+					c.syncFail()
 			onSuccess = (position) ->
 				card.lat = position.coords.latitude
 				card.lng = position.coords.longitude

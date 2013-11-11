@@ -14,7 +14,7 @@
     <div id="search">
       <div class="form">
         <form action="#" onsubmit="$('#search_input').blur();return false;"><span class="ico"><i class="fa fa-search"></i></span>
-          <input id="search_input" type="text" name="search" placeholder="查找单词" autocorrect="off" autocomplete="off" autocapitalize="off"><span class="btn cancel"><i class="fa fa-times-circle"></i></span>
+          <input id="search_input" type="text" name="search" placeholder="按字母搜索" autocorrect="off" autocomplete="off" autocapitalize="off"><span class="btn cancel"><i class="fa fa-times-circle"></i></span>
         </form>
       </div>
       <div class="container"></div>
@@ -35,6 +35,7 @@
       </div>
     </footer>
     <div id="help" class="modal">
+      <div class="modal-header"></div>
       <div class="container">
         <p>Hi,很高兴认识你！我叫小柒。</p>
         <p>这是一款支持离线操作的单词应用</p>
@@ -45,13 +46,18 @@
           <li><span class="fa fa-lightbulb-o"></span><span>浏览精心准备的注释</span></li>
           <li><span class="fa fa-search"></span><span>向下拉动卡片来搜索</span></li>
           <li><span class="fa fa-share-square"></span><span>一键分享制作的卡片</span></li>
+          <li><span class="fa fa-refresh"></span><span>上传离线制作的卡片</span></li>
         </ul>
         <p>小柒为你预先准备了1000多个常用单词，任何建议欢迎访问 17up.org 反馈。</p>
-        <p>～ 同一个世界 同一个单词 不同的视角 ～</p>
+        <p>～ 同一个世界 同一个单词 不同的诠释 ～</p>
         <p>当前版本 Baby 2</p>
-        <div class="start pacifico">Let's Go</div>
+      </div>
+      <div class="modal-footer">
+        <div class="start close pacifico">Let's Go</div>
       </div>
     </div>
     <div id="info" class="modal"></div>
+    <div class="md-overlay"></div>
+    <div class="md-modal md-effect-10"></div>
   </body>
 </html>

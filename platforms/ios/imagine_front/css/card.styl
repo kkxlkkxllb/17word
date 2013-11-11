@@ -4,7 +4,7 @@ c2 = #2980b9
 c1 = #3498db
 max_width = 320px
 max_height = 428px
-ctop = 70px
+bar-height = 50px
 
 article
 	display block
@@ -33,15 +33,23 @@ article
 		text-shadow-black()
 		z-index 9
 #info
+	.modal-header
+		.title
+			text-align center
+			font-size 26px
+			background c1
+			line-height bar-height
+	.modal-footer
+		.close
+			text-align center
+			font-size 26px
 	.container
 		width 320px
 		> div
 			padding 0 20px
 			margin-bottom 15px
-		.title
-			text-align center
-			font-size 26px
-			margin-top 10px
+		.family
+			margin-top 15px
 		.tagg
 			border-radius 8px
 			background c1

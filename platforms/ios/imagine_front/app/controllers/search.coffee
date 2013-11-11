@@ -2,6 +2,7 @@ Card = require("models/card")
 class Search extends Spine.Controller
 	events:
 		"click .word": "select"
+		"click .cn": "cn"
 	constructor: ->
 		super
 		@$el.drag_search()
@@ -17,6 +18,11 @@ class Search extends Spine.Controller
 			$container.html require("views/result")(words: words)
 		else
 			$container.empty()
+	cn: ->
+		str = $.trim $("#search_input").val()
+		$container = $("#search .container")
+		words = Card.search_by_cn(str)
+		$container.html require("views/result")(words: words, hc: true)
 	select: (e) ->
 		title = $(e.currentTarget).text()
 		card = Card.findByAttribute "title", title

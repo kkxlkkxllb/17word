@@ -16,6 +16,11 @@ foot-height = 68px
 	border-radius 10px
 	font-size 16px
 
+@-webkit-keyframes breath
+	50%
+		opacity 0.9
+		text-shadow 0 0 150px #FFF, 0 0 60px #FFF, 0 0 10px #FFF
+
 footer
 	fixed()
 	bottom 0
@@ -36,4 +41,8 @@ footer
 				text-shadow-inset()
 				position relative
 				&:active
-					background c2
+					background c1
+			.share
+				span.breath
+					-webkit-animation breath 1.5s infinite ease-in-out
+

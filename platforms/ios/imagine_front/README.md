@@ -36,3 +36,4 @@ $("img.u_word").unveil 100, ->
 			each s in sentence
 				li= s
 ```
+/var/mobile/Applications/964807D8-318A-4706-B17C-58F6A1EA3089/Documents/sue.jpg

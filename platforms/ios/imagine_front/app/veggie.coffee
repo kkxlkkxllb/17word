@@ -12,7 +12,16 @@ window.addEventListener 'load', ->
 ,false
 
 $ ->
-	$(".modal").on "click", ->
-		$(@).removeClass "show"
-
-
+	$(".modal").on "click", ".close", ->
+		$(".modal").removeClass "show"
+	$notify = $(".md-modal")
+	$overlay = $(".md-overlay")
+	removeModal = ->
+		$notify.removeClass "md-show"
+		$overlay.removeClass "show"
+		$(".disable_event").removeClass "disable_event"
+	$notify.on "click",'.md-close',(ev) ->
+		ev.stopPropagation()
+		removeModal()
+	$overlay.click ->
+		removeModal()

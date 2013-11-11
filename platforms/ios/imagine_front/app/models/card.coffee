@@ -1,6 +1,6 @@
 AjaxCard = require("models/ajax_card")
 class Card extends Spine.Model
-	@configure 'Card', 'title', 'content', 'raw_content', 'pos', 'image', "_id", "synset", "sync_over", "image_url", "lat", "lng", "altitude", "cap_at", "actived", "my_audio", "family", "quotes"
+	@configure 'Card', 'title', 'content', 'raw_content',"image", 'pos',  "_id", "synset", "sync_over", "image_url", "lat", "lng", "altitude", "cap_at", "actived", "my_audio", "family", "quotes"
 	@extend Spine.Model.Local
 	@fetch: ->
 		# @clean()
@@ -28,6 +28,10 @@ class Card extends Spine.Model
 	@search_by: (str) ->
 		@select (item) ->
 			item["title"].indexOf(str) > -1
+	@search_by_cn: (str) ->
+		@select (item) ->
+			cn = item["raw_content"]["cn"][0]
+			cn.text.indexOf(str) > -1
 	@group_by: (letter) ->
 		words = @select (item) ->
 			item["title"].indexOf(letter) is 0
@@ -44,6 +48,7 @@ class Card extends Spine.Model
 		@clean()
 		@fetch()
 		this
+
 	getPics: (onSuccess,onFail) ->
 		request_url = Spine.Model.host + "/api/cards/imagine"
 		params =
@@ -55,23 +60,24 @@ class Card extends Spine.Model
 			url: request_url
 		).done(onSuccess).fail(onFail)
 	sync: (handler) ->
-		blob = dataURLtoBlob(@image)
-		form = new FormData()
-		form.append("image", blob)
-		form.append("lat", @lat) if @lat
-		form.append("lng", @lng) if @lng
-		form.append("altitude", @altitude) if @altitude
-		form.append("cap_at", @cap_at || new Date())
-		form.append("_id",@_id)
-		form.append("uuid",device.uuid)
-		request_url = Spine.Model.host + "/api/cards/create"
-		AjaxCard.ajaxQueue(
-			type: 'POST'
-			url: request_url
-			data: form
-			contentType: false
-			processData: false
-		).done(@syncSuccess).fail(@syncFail).done(handler)
+		img = @image
+		Card.loadFile img,(blob) =>
+			form = new FormData()
+			form.append("image", blob)
+			form.append("lat", @lat) if @lat
+			form.append("lng", @lng) if @lng
+			form.append("altitude", @altitude) if @altitude
+			form.append("cap_at", @cap_at || new Date())
+			form.append("_id",@_id)
+			form.append("uuid",device.uuid)
+			request_url = Spine.Model.host + "/api/cards/create"
+			AjaxCard.ajaxQueue(
+				type: 'POST'
+				url: request_url
+				data: form
+				contentType: false
+				processData: false
+			).done(@syncSuccess).fail(@syncFail).done(handler)
 	syncSuccess: (d) =>
 		if d.status is 0
 			img_url = Spine.Model.host + d.data
@@ -95,4 +101,19 @@ class Card extends Spine.Model
 			contentType: false
 			processData: false
 		)
+	@loadFile: (file,handler) ->
+		path = file.split("file://")[1]
+		fail = (error) ->
+			console.log error
+		readDataUrl = (file) ->
+			reader = new FileReader()
+			reader.onloadend = (evt) ->
+				blob = dataURLtoBlob(evt.target.result)
+				handler blob
+			reader.readAsDataURL(file)
+		gotFileEntry = (fileEntry) ->
+			fileEntry.file(readDataUrl, fail)
+		gotFS = (fileSystem) ->
+			fileSystem.root.getFile(path, null, gotFileEntry, fail)
+		requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail)
 module.exports = Card

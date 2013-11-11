@@ -1,5 +1,6 @@
-.container
+.modal-header
 	.title.pacifico= title
+.container
 	.family
 		each f in family
 			span.tagg= f.word
@@ -23,4 +24,6 @@
 				span.fa.fa-quote-left
 				span.text
 					!= q
-
+.modal-footer
+	.close
+		span.fa.fa-chevron-down

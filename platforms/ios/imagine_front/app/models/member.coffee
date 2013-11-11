@@ -71,4 +71,17 @@ class Member extends Spine.Model
 				fileEntry.file(gotFile, fail)
 			fileSystem.root.getFile(media_file, null, gotFileEntry, fail)
 		requestFileSystem(LocalFileSystem.TEMPORARY, 0, onSuccess, onError)
+	@writeImage: (data,name,handler) ->
+		fail = (error) ->
+			console.log error
+		gotFileWriter = (writer) ->
+			writer.onwriteend = (evt) ->
+				handler evt.target.fileName
+			writer.write(data)
+		gotFileEntry = (fileEntry) ->
+			fileEntry.createWriter(gotFileWriter, fail)
+		gotFS = (fileSystem) ->
+			fileSystem.root.getFile(name + ".jpg", {create: true, exclusive: false}, gotFileEntry, fail)
+		requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail)
+
 module.exports = Member

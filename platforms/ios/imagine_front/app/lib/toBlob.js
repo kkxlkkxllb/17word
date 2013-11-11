@@ -21,3 +21,12 @@ window.dataURLtoBlob = function(data) {
 	}
 }
 
+window.hasChn = function(s)  {
+	var patrn= /[u4E00-u9FA5]|[uFE30-uFFA0]/gi;
+	if (!patrn.exec(s)){
+		return false;
+	}else{
+		return true;
+	}
+}
+

@@ -8,4 +8,8 @@ if words.length > 0
 					span.checked
 						i.fa.fa-check-square-o
 else
-	.empty_tip 抱歉，好像没找到您要的单词
+	if hc
+		.empty_tip 抱歉，小柒无能为力了
+	else
+		.empty_tip 抱歉，在您的词库里没找到相关的单词
+		.try.cn 试试按中文词义搜索

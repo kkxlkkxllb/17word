@@ -21,17 +21,17 @@ class Footer extends Spine.Controller
 			if cards.length > 0
 				$target.find(".fa-refresh").addClass 'fa-spin'
 				for card in cards
-					card.sync().done =>
+					card.sync =>
 						@render_badge()
 						if Card.unSync().length is 0
 							$target.find(".fa-refresh").removeClass 'fa-spin'
-							@notify("所有卡片都已同步到您的17up空间啦","恭喜","知道咯",$target)
+							@notify("所有卡片都已同步到您的17up空间啦","恭喜","知道咯")
 			else
-				@notify("没有发现未同步的卡片哦","恭喜","OK",$target)
+				@notify("没有发现未同步的卡片哦","恭喜","OK")
 		else if Member.checkConnection(Connection.NONE)
-			@notify("系统未监测到网络，无法同步","遗憾","知道咯",$target)
+			@notify("系统未监测到网络，无法同步","遗憾","知道咯")
 		else
-			@notify("建议在 WIFI 网络下执行同步，节省您的流量哦","友情提示","知道咯",$target)
+			@notify("建议在 WIFI 网络下执行同步，节省您的流量哦","友情提示","知道咯")
 	share: (e) ->
 		# e.stopPropagation()
 		card = Card.actived()
@@ -49,18 +49,22 @@ class Footer extends Spine.Controller
 			else
 				$target = $(e.currentTarget)
 				$target.addClass 'disable_event'
-				$target.find("span").addClass "fa-spin"
+				$target.find("span").addClass "breath"
 				card.sync ->
 					card.trigger "badge:refresh"
-					$target.find("span").removeClass "fa-spin"
+					$target.find("span").removeClass "breath"
 					$target.removeClass 'disable_event'
 					doShare()
 		else
 			@notify("你还没有拍照制作这张单词卡片呢！","ohh","知道咯")
-	notify: (content,title,button,$target) ->
-		cal = ->
-			if $target
-				$target.removeClass 'disable_event'
-			false
-		navigator.notification.alert content,cal,title,button
+	notify: (content,title,button) ->
+		# navigator.notification.alert content,cal,title,button
+		obj =
+			title: title
+			msg: content
+			button: button
+		$notify = $(".md-modal")
+		$notify.html require("views/notify")(obj)
+		$notify.addClass "md-show"
+		$(".md-overlay").addClass "show"
 module.exports = Footer

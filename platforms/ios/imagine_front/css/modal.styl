@@ -1,8 +1,31 @@
 @import './mixin'
 
-bar-height = 70px
+bar-height = 50px
+foot-height = 68px
 card_height = 428px
+c2 = #2980b9
+c1 = #3498db
 
+.md-content
+	color #fff
+	background c2
+	position relative
+	border-radius 3px
+	margin 0 auto
+	.msg
+		margin-bottom 20px
+		text_center()
+	button
+		border none
+		padding 0.6em 1.2em
+		background c1
+		color #fff
+		font-size 1em;
+		letter-spacing 1px
+		text-transform uppercase
+		display inline-block;
+		margin 3px 2px
+		border-radius 2px
 .modal
 	display none
 	position absolute
@@ -27,10 +50,19 @@ card_height = 428px
 	span.fa
 		margin-right 5px
 .modal
+	text-shadow-inset()
+	.modal-header
+		height bar-height
+		border-bottom 1px dashed c2
+		padding-top 20px
+	.modal-footer
+		background c2
+		height foot-height
+		line-height foot-height
+		border-top 1px dashed c1
+		.close:active
+			background c1
 	.container
-		position absolute
-		top (bar-height + 1)
-		text-shadow-inset()
 		background c2
 		width 100%
 		height card_height
